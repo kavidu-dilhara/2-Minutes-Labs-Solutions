@@ -85,6 +85,7 @@ sleep 20
 
 deploy_function() {
 gcloud functions deploy process-invoices \
+--gen2 \
 --region=${CLOUD_FUNCTION_LOCATION} \
 --entry-point=process_invoice \
 --runtime=python39 \
@@ -92,9 +93,8 @@ gcloud functions deploy process-invoices \
 --source=cloud-functions/process-invoices \
 --timeout=400 \
 --env-vars-file=cloud-functions/process-invoices/.env.yaml \
---trigger-resource=gs://${PROJECT_ID}-input-invoices \
---trigger-event=google.storage.object.finalize \
---no-gen2
+--trigger-event-filters="type=google.cloud.storage.object.v1.finalized" \
+--trigger-event-filters="bucket=${PROJECT_ID}-input-invoices"
 }
 
 deploy_success=false
@@ -119,16 +119,16 @@ PROCESSOR_ID=$(curl -X GET \
 export PROCESSOR_ID
 
 gcloud functions deploy process-invoices \
+  --gen2 \
   --region=${CLOUD_FUNCTION_LOCATION} \
   --entry-point=process_invoice \
   --runtime=python39 \
   --source=cloud-functions/process-invoices \
   --timeout=400 \
-  --trigger-resource=gs://${PROJECT_ID}-input-invoices \
-  --trigger-event=google.storage.object.finalize \
+  --trigger-event-filters="type=google.cloud.storage.object.v1.finalized" \
+  --trigger-event-filters="bucket=${PROJECT_ID}-input-invoices" \
   --update-env-vars=PROCESSOR_ID=${PROCESSOR_ID},PARSER_LOCATION=us,PROJECT_ID=${PROJECT_ID} \
-  --service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
-  --no-gen2
+  --service-account=$PROJECT_NUMBER-compute@developer.gserviceaccount.com
 
 export PROJECT_ID=$(gcloud config get-value core/project)
 gsutil -m cp -r gs://cloud-training/gsp367/* \
