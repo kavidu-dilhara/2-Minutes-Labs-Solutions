@@ -1,12 +1,9 @@
 # Vertex AI: Qwik Start || [GSP917](https://www.cloudskillsboost.google/focuses/18940?parent=catalog) ||
 
-## Solution [here](https://youtu.be/AU1OEtWj8eo)
+## Solution [here](https://youtu.be/IKcmDGxp9k0)
 
 ### Run the following Commands in CloudShell
 
-```
-export ZONE=
-```
 ```
 curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/Vertex%20AI%20Qwik%20Start/gsp917.sh
 
@@ -14,23 +11,24 @@ sudo chmod +x gsp917.sh
 
 ./gsp917.sh
 ```
-
-* Go to `Instances` from [here](https://console.cloud.google.com/vertex-ai/workbench/instances?)
+### In the open terminal, run the following command to install the lab dependencies:
 
 ```
-git clone --depth=1 https://github.com/GoogleCloudPlatform/training-data-analyst
+git clone https://github.com/GoogleCloudPlatform/training-data-analyst
 cd training-data-analyst/self-paced-labs/vertex-ai/vertex-ai-qwikstart
 pip3 install --user -r requirements.txt
 sudo apt -y install python3-pandas
 sudo apt -y install graphviz
+pip uninstall openpyxl -y
 pip install openpyxl
 ```
-### Congratulations 🎉 for completing the Lab !
 
-##### *You Have Successfully Demonstrated Your Skills And Determination.*
+### Congratulations 🎉 for Completing the Lab!  
 
-#### *Well done!*
+##### *You Have Successfully Demonstrated Your Skills and Determination.*  
 
-#### Don't Forget to Join the [Telegram Channel](https://t.me/quickgcplab) & [Discussion group](https://t.me/quickgcplabchats)
+#### *Excellent Work—Keep Reaching for New Heights!*  
+
+#### Be part of the community—join the [Telegram Channel](https://t.me/quickgcplab) & [Discussion Group](https://t.me/quickgcplabchats)!  
 
 # [QUICK GCP LAB](https://www.youtube.com/@quickgcplab)
